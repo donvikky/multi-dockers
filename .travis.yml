@@ -23,3 +23,16 @@ after_success:
   - docker push vokrobodo/multi-worker
   - docker push vokrobodo/multi-server
 
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "MultiDocker-env "
+  bucket_name: "elasticbeanstalk-us-east-2-624909538174"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
